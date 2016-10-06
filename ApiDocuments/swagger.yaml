@@ -1,0 +1,157 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.0.1"
+  title: Pet manager
+
+# Describe your paths here
+paths:
+  # This is a path endpoint. Change it.
+  /pet:
+    # This is a HTTP operation
+    get:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Gets `Pet` object.
+        Provide parameter ***id** to get the Pet information.
+      # This is array of GET operation parameters:
+      parameters:
+        # An example parameter that is in query and is required
+        - name: id
+          in: query
+          description: Identify Number of the pet
+          required: true
+          type: number
+          format: int64
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+             $ref: '#/definitions/Pet'
+        404:
+          description: Could not find the pet in our database
+    
+    
+    put:
+      description: |
+        Add a new pet
+      parameters:
+        - name: pet
+          in: body
+          description: Information of the new pet
+          required: true
+          schema:
+            $ref: '#/definitions/NewPet'
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/StatusModel'
+        500:
+          description: Server Error
+          schema:
+            $ref: '#/definitions/StatusModel'
+        400:
+          description: Input Data is invalid.
+          schema:
+            $ref: '#/definitions/StatusModel'
+            
+    post:
+      description: |
+        Update a pet information
+      parameters:
+        - name: pet
+          in: body
+          description: Information of the new pet
+          required: true
+          schema:
+            $ref: '#/definitions/Pet'
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/StatusModel'
+        500:
+          description: Server Error
+          schema:
+            $ref: '#/definitions/StatusModel'
+        400:
+          description: Input Data is invalid.
+          schema:
+            $ref: '#/definitions/StatusModel'
+            
+    delete:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Remove a "pet" from database 
+        Provide parameter ***id** to remove the pet's record.
+      # This is array of GET operation parameters:
+      parameters:
+        # An example parameter that is in query and is required
+        - name: id
+          in: query
+          description: Identify Number of the pet
+          required: true
+          type: number
+          format: int64
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+             $ref: '#/definitions/Pet'
+        404:
+          description: Could not find the pet in our database
+definitions:
+  Pet:
+    type: object
+    required:
+      - id
+      - name
+    properties:
+      id:
+        type: number
+        format: int64
+      name:
+        type: string
+      ages:
+        type: number
+      weights:
+        type: number
+  NewPet:
+    type: object
+    required:
+      - name
+    properties:
+      id:
+        type: number
+        format: int64
+      name:
+        type: string
+      ages:
+        type: number
+      weights:
+        type: number
+  
+  StatusModel:
+    type: object
+    required:
+      - status
+    properties:
+      status:
+        type: number
+      errorCode:
+        type: number
+      messages:
+        type: string
