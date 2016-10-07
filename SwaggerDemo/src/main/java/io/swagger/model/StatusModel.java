@@ -1,12 +1,10 @@
-package com.conghau.SwaggerDemo.model;
+package io.swagger.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
-
 
 
 
@@ -16,13 +14,13 @@ import java.math.BigDecimal;
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2016-10-06T19:35:44.435Z")
 
 public class StatusModel   {
-  private BigDecimal status = null;
+  private Integer status = null;
 
-  private BigDecimal errorCode = null;
+  private Integer errorCode = null;
 
   private String messages = null;
 
-  public StatusModel status(BigDecimal status) {
+  public StatusModel status(Integer status) {
     this.status = status;
     return this;
   }
@@ -32,15 +30,15 @@ public class StatusModel   {
    * @return status
   **/
   @ApiModelProperty(required = true, value = "")
-  public BigDecimal getStatus() {
+  public Integer getStatus() {
     return status;
   }
 
-  public void setStatus(BigDecimal status) {
+  public void setStatus(Integer status) {
     this.status = status;
   }
 
-  public StatusModel errorCode(BigDecimal errorCode) {
+  public StatusModel errorCode(Integer errorCode) {
     this.errorCode = errorCode;
     return this;
   }
@@ -50,11 +48,11 @@ public class StatusModel   {
    * @return errorCode
   **/
   @ApiModelProperty(value = "")
-  public BigDecimal getErrorCode() {
+  public Integer getErrorCode() {
     return errorCode;
   }
 
-  public void setErrorCode(BigDecimal errorCode) {
+  public void setErrorCode(Integer errorCode) {
     this.errorCode = errorCode;
   }
 

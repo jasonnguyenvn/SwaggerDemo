@@ -1,10 +1,9 @@
-package com.conghau.SwaggerDemo.api;
+package io.swagger.api;
 
-import com.conghau.SwaggerDemo.model.Pet;
-
+import io.swagger.model.Pet;
 import java.math.BigDecimal;
-import com.conghau.SwaggerDemo.model.StatusModel;
-import com.conghau.SwaggerDemo.model.NewPet;
+import io.swagger.model.StatusModel;
+import io.swagger.model.NewPet;
 
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2016-10-06T19:35:44.435Z")
 
 @Api(value = "pet", description = "the pet API")
@@ -28,7 +29,7 @@ public interface PetApi {
         @ApiResponse(code = 404, message = "Could not find the pet in our database", response = Pet.class) })
     @RequestMapping(value = "/pet",
         method = RequestMethod.DELETE)
-    ResponseEntity<Pet> petDelete(@ApiParam(value = "Identify Number of the pet", required = true) @RequestParam(value = "id", required = true) BigDecimal id
+    ResponseEntity<Pet> petDelete(@ApiParam(value = "Identify Number of the pet", required = true) @RequestParam(value = "id", required = true) Long id
 
 
 
@@ -41,7 +42,7 @@ public interface PetApi {
         @ApiResponse(code = 404, message = "Could not find the pet in our database", response = Pet.class) })
     @RequestMapping(value = "/pet",
         method = RequestMethod.GET)
-    ResponseEntity<Pet> petGet(@ApiParam(value = "Identify Number of the pet", required = true) @RequestParam(value = "id", required = true) BigDecimal id
+    ResponseEntity petGet(@ApiParam(value = "Identify Number of the pet", required = true) @RequestParam(value = "id", required = true) Long id
 
 
 

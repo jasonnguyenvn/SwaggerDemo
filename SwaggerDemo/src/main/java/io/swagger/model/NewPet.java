@@ -1,4 +1,4 @@
-package com.conghau.SwaggerDemo.model;
+package io.swagger.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,20 +11,20 @@ import java.math.BigDecimal;
 
 
 /**
- * Pet
+ * NewPet
  */
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2016-10-06T19:35:44.435Z")
 
-public class Pet   {
-  private BigDecimal id = null;
+public class NewPet   {
+  private Long id = null;
 
   private String name = null;
 
-  private BigDecimal ages = null;
+  private Double ages = null;
 
-  private BigDecimal weights = null;
+  private Double weights = null;
 
-  public Pet id(BigDecimal id) {
+  public NewPet id(Long id) {
     this.id = id;
     return this;
   }
@@ -33,16 +33,16 @@ public class Pet   {
    * Get id
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "")
-  public BigDecimal getId() {
+  @ApiModelProperty(value = "")
+  public Long getId() {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-  public Pet name(String name) {
+  public NewPet name(String name) {
     this.name = name;
     return this;
   }
@@ -60,7 +60,7 @@ public class Pet   {
     this.name = name;
   }
 
-  public Pet ages(BigDecimal ages) {
+  public NewPet ages(Double ages) {
     this.ages = ages;
     return this;
   }
@@ -70,15 +70,15 @@ public class Pet   {
    * @return ages
   **/
   @ApiModelProperty(value = "")
-  public BigDecimal getAges() {
+  public Double getAges() {
     return ages;
   }
 
-  public void setAges(BigDecimal ages) {
+  public void setAges(Double ages) {
     this.ages = ages;
   }
 
-  public Pet weights(BigDecimal weights) {
+  public NewPet weights(Double weights) {
     this.weights = weights;
     return this;
   }
@@ -88,11 +88,11 @@ public class Pet   {
    * @return weights
   **/
   @ApiModelProperty(value = "")
-  public BigDecimal getWeights() {
+  public Double getWeights() {
     return weights;
   }
 
-  public void setWeights(BigDecimal weights) {
+  public void setWeights(Double weights) {
     this.weights = weights;
   }
 
@@ -105,11 +105,11 @@ public class Pet   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Pet pet = (Pet) o;
-    return Objects.equals(this.id, pet.id) &&
-        Objects.equals(this.name, pet.name) &&
-        Objects.equals(this.ages, pet.ages) &&
-        Objects.equals(this.weights, pet.weights);
+    NewPet newPet = (NewPet) o;
+    return Objects.equals(this.id, newPet.id) &&
+        Objects.equals(this.name, newPet.name) &&
+        Objects.equals(this.ages, newPet.ages) &&
+        Objects.equals(this.weights, newPet.weights);
   }
 
   @Override
@@ -120,7 +120,7 @@ public class Pet   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Pet {\n");
+    sb.append("class NewPet {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");

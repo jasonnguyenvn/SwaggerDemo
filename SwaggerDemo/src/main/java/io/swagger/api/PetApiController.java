@@ -1,10 +1,8 @@
-package com.conghau.SwaggerDemo.api;
+package io.swagger.api;
 
-import com.conghau.SwaggerDemo.model.Pet;
-
-import java.math.BigDecimal;
-import com.conghau.SwaggerDemo.model.StatusModel;
-import com.conghau.SwaggerDemo.model.NewPet;
+import io.swagger.model.Pet;
+import io.swagger.model.StatusModel;
+import io.swagger.model.NewPet;
 
 import io.swagger.annotations.*;
 
@@ -18,13 +16,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2016-10-06T19:35:44.435Z")
 
 @Controller
 public class PetApiController implements PetApi {
 
-    public ResponseEntity<Pet> petDelete(@ApiParam(value = "Identify Number of the pet", required = true) @RequestParam(value = "id", required = true) BigDecimal id
+    public ResponseEntity<Pet> petDelete(@ApiParam(value = "Identify Number of the pet", required = true) @RequestParam(value = "id", required = true) Long id
 
 
 
@@ -33,13 +33,29 @@ public class PetApiController implements PetApi {
         return new ResponseEntity<Pet>(HttpStatus.OK);
     }
 
-    public ResponseEntity<Pet> petGet(@ApiParam(value = "Identify Number of the pet", required = true) @RequestParam(value = "id", required = true) BigDecimal id
+    public ResponseEntity petGet(@ApiParam(value = "Identify Number of the pet", required = true) @RequestParam(value = "id", required = true) Long id
 
 
 
 ) {
         // do some magic!
-        return new ResponseEntity<Pet>(HttpStatus.OK);
+        //ResponseEntity<Pet> response = new ResponseEntity<>(HttpStatus.OK);
+
+        Pet aPet = new Pet();
+        aPet.id(new Long(1));
+        aPet.name("abc");
+        aPet.ages(2.2);
+        aPet.weights(3.2);
+
+        if (!aPet.getId().equals(id)) {
+            StatusModel error = new StatusModel();
+            error.status(-1);
+            error.errorCode(404);
+            error.messages("Pet not found. Invalid ID.");
+            return new ResponseEntity<StatusModel>(error, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<Pet>(aPet, HttpStatus.OK);
     }
 
     public ResponseEntity<StatusModel> petPost(

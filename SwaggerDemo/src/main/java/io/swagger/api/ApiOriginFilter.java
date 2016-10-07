@@ -1,4 +1,4 @@
-package com.conghau.SwaggerDemo.api;
+package io.swagger.api;
 
 import java.io.IOException;
 
